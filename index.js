@@ -14,6 +14,7 @@ mongoose.Promise = Promise;
 
 // connect to mongo db
 const mongoUri = config.mongo.host;
+console.log("mongo:::", mongoUri);
 mongoose.connect(mongoUri, {
   useCreateIndex: true,
   useNewUrlParser: true,
