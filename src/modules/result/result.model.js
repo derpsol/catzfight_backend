@@ -1,12 +1,28 @@
 const mongoose = require("mongoose");
 
-const RandomSchema = new mongoose.Schema({
+const ResultSchema = new mongoose.Schema({
   randomNumber1: {
     type: Number,
     required: true,
   },
   randomNumber2: {
     type: Number,
+    required: true,
+  },
+  nftUrl1: {
+    type: String,
+    required: true,
+  },
+  nftUrl2: {
+    type: String,
+    required: true,
+  },
+  address1: {
+    type: String,
+    required: true,
+  },
+  address2: {
+    type: String,
     required: true,
   },
   roomnum: {
@@ -20,9 +36,9 @@ const RandomSchema = new mongoose.Schema({
   },
 });
 
-RandomSchema.method({});
+ResultSchema.method({});
 
-RandomSchema.statics = {
+ResultSchema.statics = {
   async get(id) {
     const book = await this.findById(id).populate("owner").exec();
     if (!book) {
@@ -45,4 +61,4 @@ RandomSchema.statics = {
   },
 };
 
-module.exports = mongoose.model("Random", RandomSchema);
+module.exports = mongoose.model("Result", ResultSchema);

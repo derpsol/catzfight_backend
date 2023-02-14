@@ -1,18 +1,14 @@
 const mongoose = require("mongoose");
 
-const RandomSchema = new mongoose.Schema({
-  randomNumber1: {
-    type: Number,
-    required: true,
-  },
-  randomNumber2: {
-    type: Number,
-    required: true,
-  },
-  roomnum: {
-    type: Number,
+const WinnerSchema = new mongoose.Schema({
+  address: {
+    type: String,
     required: true,
     unique: true,
+  },
+  winCount: {
+    type: Number,
+    required: true,
   },
   createdAt: {
     type: Date,
@@ -20,9 +16,9 @@ const RandomSchema = new mongoose.Schema({
   },
 });
 
-RandomSchema.method({});
+WinnerSchema.method({});
 
-RandomSchema.statics = {
+WinnerSchema.statics = {
   async get(id) {
     const book = await this.findById(id).populate("owner").exec();
     if (!book) {
@@ -45,4 +41,4 @@ RandomSchema.statics = {
   },
 };
 
-module.exports = mongoose.model("Random", RandomSchema);
+module.exports = mongoose.model("Winner", WinnerSchema);

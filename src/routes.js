@@ -6,6 +6,8 @@ const authRoutes = require('./modules/auth/auth.routes');
 const bettingRoutes = require('./modules/betting/betting.routes');
 const nftRoutes = require('./modules/nft/nft.routes');
 const randomRoutes = require('./modules/random/random.routes');
+const resultRoutes = require('./modules/result/result.routes');
+const winnerRoutes = require('./modules/winner/winner.routes');
 
 const router = express.Router();
 
@@ -17,6 +19,8 @@ router.use('/auth', authRoutes);
 router.use('/betting', bettingRoutes);
 router.use('/nft', nftRoutes);
 router.use('/random', randomRoutes);
+router.use('/result', resultRoutes);
+router.use('/winner', winnerRoutes);
 
 // Validating all the APIs with jwt token.
 // router.use(expressJwt({
