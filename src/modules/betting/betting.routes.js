@@ -27,6 +27,9 @@ const paramValidation = {
 router.route('/')
   .get(bettingCtrl.list);
 
+router.route('/find')
+  .get(bettingCtrl.find);
+
 router.route('/create')
   .post(
     // validate(paramValidation.createRoom), 

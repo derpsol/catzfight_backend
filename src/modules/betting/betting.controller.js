@@ -43,6 +43,16 @@ async function update(req, res, next) {
   }
 }
 
+async function find(req, res, next) {
+  const room = req.query;
+  try {
+    const foundRoom = await Betting.findOne({ fightRoom : room.fightRoom }).exec();
+    return res.json(foundRoom);
+  } catch (error) {
+    return next(error);
+  }
+}
+
 async function list(req, res, next) {
   try {
     const bettings = await Betting.list();
@@ -69,4 +79,5 @@ module.exports = {
   update,
   list,
   remove,
+  find,
 };
