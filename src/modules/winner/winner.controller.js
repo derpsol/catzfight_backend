@@ -2,7 +2,8 @@ const Result = require('./winner.model');
 
 async function list(req, res, next) {
   try {
-    const results = await Result.list();
+    const results = await Result.find().limit(10).sort({winCount: -1});
+
     return res.json(results);
   } catch (error) {
     return next(error);

@@ -2,17 +2,13 @@ const Result = require('./result.model');
 
 async function list(req, res, next) {
   try {
-    const results = await Result.list();
+    const results = await Result.find().limit(3).sort({ roomnum: -1 });
     return res.json(results);
   } catch (error) {
     return next(error);
   }
 }
 
-function get(req, res) {
-  const result = Result.find();
-  return res.json(result);
-}
 
 async function create(req, res, next) {
   const result = new Result(req.query);
@@ -25,7 +21,6 @@ async function create(req, res, next) {
 }
 
 module.exports = {
-  get,
   create,
   list,
 };

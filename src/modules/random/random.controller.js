@@ -2,7 +2,8 @@ const Random = require('./random.model');
 
 async function list(req, res, next) {
   try {
-    const randoms = await Random.list();
+    const randoms = await Random.find().limit(10).sort({ createdAt: -1 });
+
     return res.json(randoms);
   } catch (error) {
     return next(error);
