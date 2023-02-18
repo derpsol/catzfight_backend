@@ -23,7 +23,6 @@ async function create(req, res, next) {
     const foundRoom = await Betting.findOne({ roomnum : room.roomnum }).exec();
     if(foundRoom) return next(new APIError(httpStatus.BAD_REQUEST, "Room already exists"));
     const savedRoom = await room.save();
-    return res.json(savedRoom);
   } catch (error) {
     return next(error);
   }
@@ -62,6 +61,15 @@ async function list(req, res, next) {
   }
 }
 
+async function socketlist() {
+  try {
+    const bettings = await Betting.list();
+    return bettings;
+  } catch (error) {
+    return error;
+  }
+}
+
 async function remove(req, res, next) {
   const roomnum = req.params.roomnum;
   try {
@@ -80,4 +88,5 @@ module.exports = {
   list,
   remove,
   find,
+  socketlist,
 };

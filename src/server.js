@@ -11,8 +11,8 @@ const helmet = require('helmet');
 const routes = require('./routes');
 const config = require('./config');
 const APIError = require('./helpers/APIError');
-
-const app = express();
+const app = require("express")();
+const http = require('http');
 
 if (config.env === 'development') {
   app.use(logger('dev'));
@@ -62,6 +62,8 @@ app.use((err, req, res, next) => // eslint-disable-line no-unused-vars
   res.status(err.status).json({ // eslint-disable-line implicit-arrow-linebreak
     message: err.isPublic ? err.message : httpStatus[err.status],
     stack: config.env === 'development' ? err.stack : {},
-  }));
+}));
 
-module.exports = app;
+const server = http.createServer(app);
+
+module.exports = server;
