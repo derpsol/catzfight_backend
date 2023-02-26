@@ -61,7 +61,6 @@ io.on('connection', (socket) => {
   })
 });
 
-
 if (!module.parent) {
   // listen on port config.port
   server.listen(config.port, () => {

@@ -25,6 +25,8 @@ router.route('/update')
 router.route('/delete/:roomnum')
   .delete(bettingCtrl.remove);
 
+router.route('/delete1/:roomnum')
+  .delete(bettingCtrl.remove1);
 router.param('bookId', bettingCtrl.load);
 
 module.exports = router;
