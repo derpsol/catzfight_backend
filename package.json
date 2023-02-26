@@ -16,7 +16,7 @@
     "lint": "esw *.js src --color",
     "lint:watch": "npm run lint -- --watch",
     "precommit": "lint-staged && npm test",
-    "start": "node index",
+    "start": "pm2 node index",
     "start:debug": "cross-env DEBUG=node-server:* npm start",
     "test": "cross-env NODE_ENV=test mocha --timeout 5000 --ui bdd --reporter spec --colors src --recursive --exit",
     "test:watch": "npm test -- --watch",
@@ -69,6 +69,7 @@
     "method-override": "3.0.0",
     "mongoose": "5.12.4",
     "morgan": "1.10.0",
+    "pm2": "5.2.2",
     "socket.io": "4.6.0"
   },
   "devDependencies": {
