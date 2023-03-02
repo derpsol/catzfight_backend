@@ -1,6 +1,4 @@
 const express = require('express');
-const expressJwt = require('express-jwt');
-const config = require('./config');
 const userRoutes = require('./modules/user/user.routes');
 const authRoutes = require('./modules/auth/auth.routes');
 const bettingRoutes = require('./modules/betting/betting.routes');

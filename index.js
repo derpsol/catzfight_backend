@@ -1,15 +1,11 @@
 const mongoose = require("mongoose");
 const util = require("util");
-const ioserver = require("socket.io");
 const debug = require("debug")("node-server:index");
-const { Socket } = require("socket.io");
-const bettingCtrl = require("./src/modules/betting/betting.controller");
 
 // config should be imported before importing any other file
 const config = require("./src/config");
 const server = require("./src/server");
 const app = require("express")();
-const express = require("express");
 const socketIO = require('socket.io');
 
 // make bluebird default Promise
