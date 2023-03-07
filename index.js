@@ -53,6 +53,7 @@ io.on('connection', (socket) => {
   console.log('entered');
 
   socket.on('enter', () => {
+    console.log("broadcast to everyone");
     socket.broadcast.to('fightRoom').emit('entered');
   })
 });
