@@ -6,9 +6,9 @@ const { validate } = require('../../helpers');
 const router = express.Router();
 
 router.route('/ids')
-    .get(nftCtrl.findAll);
+    .get(nftCtrl.findIds);
 
 router.route('/urls')
-  .get(nftCtrl.findOne)
+  .get(nftCtrl.findUrls)
 
 module.exports = router;

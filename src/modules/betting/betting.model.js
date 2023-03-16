@@ -23,6 +23,14 @@ const BettingSchema = new mongoose.Schema({
     type: String,
     required: false
   },
+  firstRandom: {
+    type: Number,
+    require: false
+  },
+  secondRandom: {
+    type: Number,
+    require: false
+  },
   fightRoom: {
     type: Number,
     required: true

@@ -3,7 +3,7 @@ const userRoutes = require('./modules/user/user.routes');
 const authRoutes = require('./modules/auth/auth.routes');
 const bettingRoutes = require('./modules/betting/betting.routes');
 const nftRoutes = require('./modules/nft/nft.routes');
-const randomRoutes = require('./modules/random/random.routes');
+const userInfo = require('./modules/userinfo/userinfo.routes');
 const resultRoutes = require('./modules/result/result.routes');
 const winnerRoutes = require('./modules/winner/winner.routes');
 
@@ -16,7 +16,7 @@ router.get('/health-check', (req, res) => res.send('OK'));
 router.use('/auth', authRoutes);
 router.use('/betting', bettingRoutes);
 router.use('/nft', nftRoutes);
-router.use('/random', randomRoutes);
+router.use('/random', userInfo);
 router.use('/result', resultRoutes);
 router.use('/winner', winnerRoutes);
 

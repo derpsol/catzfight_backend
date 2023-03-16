@@ -1,18 +1,22 @@
+const { string } = require("joi");
 const mongoose = require("mongoose");
 
 const RandomSchema = new mongoose.Schema({
-  randomNumber1: {
-    type: Number,
-    required: true,
+  address: {
+    type: String,
+    require: true
   },
-  randomNumber2: {
-    type: Number,
-    required: true,
+  stakeAmount: {
+    type: Numebr,
+    require: false
   },
-  roomnum: {
+  claimAmount: {
     type: Number,
-    required: true,
-    unique: true,
+    require: false
+  },
+  ownNfts: {
+    type: Number[0],
+    require: false
   },
   createdAt: {
     type: Date,

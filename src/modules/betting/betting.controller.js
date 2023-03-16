@@ -35,6 +35,7 @@ async function update(req, res, next) {
     if(foundRoom.secondNFT) return next(new APIError(httpStatus.BAD_REQUEST, "Player already exists"));
     foundRoom.secondNFT = room.secondNFT;
     foundRoom.secondaddress = room.secondaddress;
+    foundRoom.secondRandom = room.secondRandom;
     const savedRoom = await foundRoom.save();
     return res.json(savedRoom);
   } catch (error) {
@@ -80,19 +81,6 @@ async function remove(req, res, next) {
   }
 }
 
-async function remove1(req, res, next) {
-  const roomnum = req.params.roomnum;
-  try {
-    const foundRoom = await Betting.findOne({ roomnum : roomnum }).exec();
-    foundRoom.secondNFT = null;
-    foundRoom.secondaddress = null;
-    const savedRoom = await foundRoom.save();
-    return res.json(savedRoom);
-  } catch (error) {
-    return next(error);
-  }
-}
-
 module.exports = {
   load,
   get,
@@ -100,7 +88,6 @@ module.exports = {
   update,
   list,
   remove,
-  remove1,
   find,
   socketlist,
 };

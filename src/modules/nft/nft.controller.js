@@ -13,7 +13,7 @@ const config = {
 
 const alchemy = new Alchemy(config);
 
-async function findAll(req, res, next) {
+async function findIds(req, res, next) {
     try {
         // Get all NFTs
         const nfts = await alchemy.nft.getNftsForOwner(req.query.address);
@@ -29,7 +29,7 @@ async function findAll(req, res, next) {
     }
 }
 
-async function findOne(req, res, next) {
+async function findUrls(req, res, next) {
     try {
         const nfts = await alchemy.nft.getNftsForOwner(req.query.address);
         var len = nfts.ownedNfts.length;
@@ -46,6 +46,6 @@ async function findOne(req, res, next) {
 }
 
 module.exports = {
-    findAll,
-    findOne,
+    findIds,
+    findUrls,
 };
