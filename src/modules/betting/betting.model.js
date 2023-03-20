@@ -5,7 +5,8 @@ const APIError = require('../../helpers/APIError');
 const BettingSchema = new mongoose.Schema({
   roomnum: {
     type: Number,
-    required: true
+    required: true,
+    unique: true,
   },
   firstaddress: {
     type: String,
@@ -23,6 +24,14 @@ const BettingSchema = new mongoose.Schema({
     type: String,
     required: false
   },
+  firstId: {
+    type: Number,
+    require: false,
+  },
+  secondId: {
+    type: Number,
+    require: false,
+  },
   firstRandom: {
     type: Number,
     require: false
@@ -30,10 +39,6 @@ const BettingSchema = new mongoose.Schema({
   secondRandom: {
     type: Number,
     require: false
-  },
-  fightRoom: {
-    type: Number,
-    required: true
   },
   createdAt: {
     type: Date,

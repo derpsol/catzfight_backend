@@ -1,21 +1,14 @@
 const { string } = require("joi");
 const mongoose = require("mongoose");
 
-const UserInfo = new mongoose.Schema({
-  address: {
-    type: String,
-    require: true
-  },
-  stakeAmount: {
+const RandomSchema = new mongoose.Schema({
+  rnadomNumber1: {
     type: Number,
     require: false
   },
-  claimAmount: {
+  randomNumber2: {
     type: Number,
     require: false
-  },
-  ownNfts: {
-    Number
   },
   createdAt: {
     type: Date,
@@ -23,9 +16,9 @@ const UserInfo = new mongoose.Schema({
   },
 });
 
-UserInfo.method({});
+RandomSchema.method({});
 
-UserInfo.statics = {
+RandomSchema.statics = {
   async get(id) {
     const book = await this.findById(id).populate("owner").exec();
     if (!book) {
@@ -48,4 +41,4 @@ UserInfo.statics = {
   },
 };
 
-module.exports = mongoose.model("UserInfo", UserInfo);
+module.exports = mongoose.model("Random", RandomSchema);

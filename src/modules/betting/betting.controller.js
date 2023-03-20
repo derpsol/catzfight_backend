@@ -20,9 +20,8 @@ function get(req, res) {
 async function create(req, res, next) {
   const room = new Betting(req.query);
   try {
-    const foundRoom = await Betting.findOne({ roomnum : room.roomnum }).exec();
-    if(foundRoom) return next(new APIError(httpStatus.BAD_REQUEST, "Room already exists"));
     const savedRoom = await room.save();
+    return res.json(savedRoom);
   } catch (error) {
     return next(error);
   }
