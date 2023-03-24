@@ -1,4 +1,3 @@
-const { address } = require('../../server');
 const userInfo = require('./userinfo.model');
 
 async function list(req, res, next) {

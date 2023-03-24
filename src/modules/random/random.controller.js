@@ -1,4 +1,3 @@
-const { address } = require('../../server');
 const Random = require('./random.model');
 
 async function list(req, res, next) {
