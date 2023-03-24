@@ -2,7 +2,11 @@ const { string } = require("joi");
 const mongoose = require("mongoose");
 
 const RandomSchema = new mongoose.Schema({
-  rnadomNumber1: {
+  roomnum: {
+    type: Number,
+    require: true
+  },
+  randomNumber1: {
     type: Number,
     require: false
   },

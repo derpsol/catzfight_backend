@@ -8,6 +8,10 @@ const BettingSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  fightRoom: {
+    type: Number,
+    require: false,
+  },
   firstaddress: {
     type: String,
     required: false
