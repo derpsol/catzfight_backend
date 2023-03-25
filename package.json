@@ -94,6 +94,5 @@
     "*.js": [
       "eslint --fix"
     ]
-  },
-  "proxy": "https://warchest.netlify.app/#/"
+  }
 }
