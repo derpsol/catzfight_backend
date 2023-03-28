@@ -33,7 +33,6 @@ async function findUrls(req, res, next) {
     try {
         const nfts = await alchemy.nft.getNftsForOwner(req.query.address);
         var len = nfts.ownedNfts.length;
-        console.log(nfts.ownedNfts[0]);
         var urls = [];
         for (let i = 0; i < len; i++) {
             urls.push(nfts.ownedNfts[i].media[0].gateway);
