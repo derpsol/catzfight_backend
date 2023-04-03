@@ -21,6 +21,7 @@ async function create(req, res, next) {
   const room = new Betting(req.query);
   try {
     const savedRoom = await room.save();
+    console.log('savedRoom: ', savedRoom);
     return res.json(savedRoom);
   } catch (error) {
     return next(error);

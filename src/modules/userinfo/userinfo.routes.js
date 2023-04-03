@@ -7,9 +7,9 @@ router.route('/')
   .get(userInfoCtrl.list);
 
 router.route('/create')
-  .post(userInfoCtrl.create)
+  .post(userInfoCtrl.create);
 
-router.route('/update')
-  .post(userInfoCtrl.update)
+router.route('/find')
+  .get(userInfoCtrl.find);
 
 module.exports = router;

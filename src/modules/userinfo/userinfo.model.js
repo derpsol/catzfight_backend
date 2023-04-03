@@ -4,7 +4,8 @@ const mongoose = require("mongoose");
 const UserInfo = new mongoose.Schema({
   address: {
     type: String,
-    require: true
+    require: true,
+    unique: true
   },
   stakeAmount: {
     type: Number,
@@ -15,7 +16,9 @@ const UserInfo = new mongoose.Schema({
     require: false
   },
   ownNfts: {
-    Number
+    type: Array,
+    require: false,
+    default: []
   },
   createdAt: {
     type: Date,
