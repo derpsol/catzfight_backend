@@ -74,7 +74,7 @@ async function socketlist() {
 async function remove(req, res, next) {
   const roomnum = req.params.roomnum;
   try {
-    const deletedRoom = await Betting.remove({roomnum: roomnum});
+    const deletedRoom = await Betting.deleteOne({roomnum: roomnum});
     return res.json(deletedRoom);
   } catch (error) {
     return next(error);
