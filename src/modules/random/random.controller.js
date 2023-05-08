@@ -16,9 +16,12 @@ function get(req, res) {
 }
 
 async function create(req, res, next) {
-  const random = new Random(req.query);
+  const random = new Random(req.body);
   try {
     const savedRandom = await random.save();
+
+    req.io.to("fightRoom").emit("savedRandom", savedRandom);
+
     return res.json(savedRandom);
   } catch (error) {
     return next(error);

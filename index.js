@@ -6,7 +6,6 @@ const debug = require("debug")("node-server:index");
 const config = require("./src/config");
 const server = require("./src/server");
 const app = require("express")();
-// const socketIO = require('socket.io');
 
 // make bluebird default Promise
 Promise = require("bluebird"); // eslint-disable-line no-global-assign
@@ -39,24 +38,6 @@ if (config.mongooseDebug) {
 app.get("/", function (req, res) {
   res.json({ message: "hooray! welcome to our api!" });
 });
-
-// module.parent check is required to support mocha watch
-// src: https://github.com/mochajs/mocha/issues/1912
-// var io = socketIO(server, {
-//   cors: {
-//     origins: '*:*'
-//   }
-// });
-
-// io.on('connection', (socket) => {
-//   socket.join("fightRoom");
-//   console.log('entered');
-
-//   socket.on('enter', () => {
-//     console.log("broadcast to everyone");
-//     socket.broadcast.to('fightRoom').emit('entered');
-//   })
-// });
 
 if (!module.parent) {
   // listen on port config.port

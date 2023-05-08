@@ -21,10 +21,8 @@ async function find(req, res, next) {
 }
 
 async function create(req, res, next) {
-  const userinfo = new userInfo(req.query);
+  const userinfo = new userInfo(req.body);
   try {
-    console.log(JSON.parse(userinfo.ownNfts));
-    userinfo.ownNfts = JSON.parse(userinfo.ownNfts)
     const findUser = await userInfo
       .findOne({ address: userinfo.address })
       .exec();

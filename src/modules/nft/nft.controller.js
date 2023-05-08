@@ -16,7 +16,7 @@ const alchemy = new Alchemy(config);
 async function findIds(req, res, next) {
     try {
         // Get all NFTs
-        const nfts = await alchemy.nft.getNftsForOwner(req.query.address);
+        const nfts = await alchemy.nft.getNftsForOwner(req.body.address);
         // Print NFTs
         var len = nfts.ownedNfts.length;
         var IDs = [];
@@ -31,7 +31,7 @@ async function findIds(req, res, next) {
 
 async function findUrls(req, res, next) {
     try {
-        const nfts = await alchemy.nft.getNftsForOwner(req.query.address);
+        const nfts = await alchemy.nft.getNftsForOwner(req.body.address);
         var len = nfts.ownedNfts.length;
         var urls = [];
         for (let i = 0; i < len; i++) {
