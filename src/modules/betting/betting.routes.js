@@ -22,7 +22,7 @@ router.route('/update')
     // validate(paramValidation.updateRoom), 
     bettingCtrl.update)
 
-router.route('/delete/:roomnum')
+router.route('/delete/:roomNum')
   .delete(bettingCtrl.remove);
 
 router.param('bookId', bettingCtrl.load);

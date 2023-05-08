@@ -16,9 +16,12 @@ function get(req, res) {
 }
 
 async function create(req, res, next) {
-  const result = new Result(req.query);
+  const result = new Result(req.body);
   try {
     const savedResult = await result.save();
+
+    req.io.to("fightRoom").emit("savedWinner", savedResult);
+
     return res.json(savedResult);
   } catch (error) {
     return next(error);
@@ -26,11 +29,14 @@ async function create(req, res, next) {
 }
 
 async function update(req, res, next) {
-  const winner = req.query;
+  const winner = req.body;
   try {
     const foundWinner = await Result.findOne({ address : winner.address }).exec();
     foundWinner.winCount = winner.winCount;
     const savedWinner = await foundWinner.save();
+
+    req.io.to("fightRoom").emit("savedWinner", savedWinner);
+
     return res.json(savedWinner);
   } catch (error) {
     return next(error);

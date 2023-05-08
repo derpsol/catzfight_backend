@@ -25,7 +25,7 @@ const ResultSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  roomnum: {
+  roomNum: {
     type: Number,
     required: true,
     unique: true,

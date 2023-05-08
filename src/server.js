@@ -12,6 +12,7 @@ const config = require('./config');
 const APIError = require('./helpers/APIError');
 const app = require("express")();
 const http = require('http');
+const socketIO = require('socket.io');
 
 if (config.env === 'development') {
   app.use(logger('dev'));
@@ -30,6 +31,28 @@ app.use(helmet());
 
 // enable CORS - Cross Origin Resource Sharing
 app.use(cors());
+
+const server = http.createServer(app);
+
+var io = socketIO(server, {
+  cors: {
+    origins: '*:*'
+  }
+});
+
+io.on('connection', (socket) => {
+  socket.join("fightRoom");
+  console.log('entered');
+
+  socket.on('receive', () => {
+    socket.emit('savedRoom');
+  })
+});
+
+app.use((req, res, next) => {
+  req.io = io; // attach io instance to req object
+  next();
+});
 
 // mount all routes on /api path
 app.use('/api', routes);
@@ -62,7 +85,5 @@ app.use((err, req, res, next) => // eslint-disable-line no-unused-vars
     message: err.isPublic ? err.message : httpStatus[err.status],
     stack: config.env === 'development' ? err.stack : {},
 }));
-
-const server = http.createServer(app);
 
 module.exports = server;

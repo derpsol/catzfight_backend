@@ -3,7 +3,7 @@ const httpStatus = require('http-status');
 const APIError = require('../../helpers/APIError');
 
 const BettingSchema = new mongoose.Schema({
-  roomnum: {
+  roomNum: {
     type: Number,
     required: true,
     unique: true,
@@ -12,11 +12,11 @@ const BettingSchema = new mongoose.Schema({
     type: Number,
     require: false,
   },
-  firstaddress: {
+  firstAddress: {
     type: String,
     required: false
   },
-  secondaddress: {
+  secondAddress: {
     type: String,
     required: false
   },
@@ -28,7 +28,7 @@ const BettingSchema = new mongoose.Schema({
     type: String,
     required: false
   },
-  firstId: {
+  tokenId: {
     type: Number,
     require: false,
   },
