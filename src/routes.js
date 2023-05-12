@@ -7,6 +7,8 @@ const userInfoRoutes = require('./modules/userinfo/userinfo.routes');
 const resultRoutes = require('./modules/result/result.routes');
 const winnerRoutes = require('./modules/winner/winner.routes');
 const randomRoutes = require('./modules/random/random.routes');
+const approvedRoutes = require('./modules/approved/approved.routes');
+const waitingRoutes = require('./modules/waiting/waiting.routes');
 
 const router = express.Router();
 
@@ -21,6 +23,8 @@ router.use('/userinfo', userInfoRoutes);
 router.use('/result', resultRoutes);
 router.use('/winner', winnerRoutes);
 router.use('/random', randomRoutes);
+router.use('/waiting', waitingRoutes);
+router.use('/approved', approvedRoutes);
 
 // Validating all the APIs with jwt token.
 // router.use(expressJwt({
