@@ -5,6 +5,14 @@ const ApproveSchema = new mongoose.Schema({
     type: String,
     require: true
   },
+  name: {
+    type: String,
+    require: true
+  },
+  symbol: {
+    type: String,
+    require: true
+  },
   createdAt: {
     type: Date,
     default: Date.now,

@@ -26,8 +26,20 @@ async function create(req, res, next) {
   }
 }
 
+async function remove(req, res, next) {
+  const address = req.params.address;
+  try {
+    const deletedRoom = await Approved.deleteOne({ address: address });
+
+    return res.json(deletedRoom);
+  } catch (error) {
+    return next(error);
+  }
+}
+
 module.exports = {
   get,
   create,
   list,
+  remove
 };
