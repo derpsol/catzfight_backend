@@ -1,18 +1,6 @@
 const httpStatus = require("http-status");
 const Betting = require("./betting.model");
 const APIError = require("../../helpers/APIError");
-const socketIO = require("socket.io");
-const server = require("../../server");
-
-async function load(req, res, next, id) {
-  try {
-    const book = await Betting.get(id);
-    req.book = book;
-    return next();
-  } catch (error) {
-    return next(error);
-  }
-}
 
 function get(req, res) {
   const betting = Betting.find();
@@ -20,6 +8,7 @@ function get(req, res) {
 }
 
 async function create(req, res, next) {
+  console.log("req.body:::", req.body);
   const room = new Betting(req.body);
   try {
     const savedRoom = await room.save();
@@ -27,7 +16,7 @@ async function create(req, res, next) {
     req.io.to("fightRoom").emit("savedRoom", savedRoom);
 
     return res.json(savedRoom);
-  } catch (error) {
+  } catch (error) {    
     return next(error);
   }
 }
@@ -86,7 +75,7 @@ async function remove(req, res, next) {
   try {
     const deletedRoom = await Betting.deleteOne({ roomNum: roomNum });
 
-    req.io.to("fightRoom").emit("savedRoom", {delRoomNum: roomNum});
+    req.io.to("fightRoom").emit("savedRoom", { delRoomNum: roomNum });
 
     return res.json(deletedRoom);
   } catch (error) {
@@ -95,7 +84,6 @@ async function remove(req, res, next) {
 }
 
 module.exports = {
-  load,
   get,
   create,
   update,
