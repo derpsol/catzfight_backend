@@ -14,19 +14,19 @@ const BettingSchema = new mongoose.Schema({
   },
   firstAddress: {
     type: String,
-    required: false
+    required: false,
   },
   secondAddress: {
     type: String,
-    required: false
+    required: false,
   },
   firstNFT: {
     type: String,
-    required: false
+    required: false,
   },
   secondNFT: {
     type: String,
-    required: false
+    required: false,
   },
   tokenId: {
     type: Number,
@@ -38,11 +38,11 @@ const BettingSchema = new mongoose.Schema({
   },
   firstRandom: {
     type: Number,
-    require: false
+    require: false,
   },
   secondRandom: {
     type: Number,
-    require: false
+    require: false,
   },
   createdAt: {
     type: Date,

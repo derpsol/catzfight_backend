@@ -9,6 +9,20 @@ async function list(req, res, next) {
   }
 }
 
+async function myResult(req, res, next) {
+  try {
+    console.log('params: ', req);
+    const results = await Result.find({
+      $or: [
+        { address1: { $eq: req.query.address } },
+        { address2: { $eq: req.query.address } }
+      ]
+    }).limit(20);
+    return res.json(results);
+  } catch (error) {
+    return next(error);
+  }
+}
 
 async function create(req, res, next) {
   const result = new Result(req.body);
@@ -25,5 +39,6 @@ async function create(req, res, next) {
 
 module.exports = {
   create,
+  myResult,
   list,
 };
