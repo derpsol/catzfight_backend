@@ -27,9 +27,9 @@ async function create(req, res, next) {
 }
 
 async function remove(req, res, next) {
-  const address = req.params.address;
+  const { address } = req.params;
   try {
-    const deletedRoom = await Approved.deleteOne({ address: address });
+    const deletedRoom = await Approved.deleteOne({ address });
 
     return res.json(deletedRoom);
   } catch (error) {
@@ -41,5 +41,5 @@ module.exports = {
   get,
   create,
   list,
-  remove
+  remove,
 };

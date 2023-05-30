@@ -2,9 +2,27 @@ const Result = require('./winner.model');
 
 async function list(req, res, next) {
   try {
-    const results = await Result.find().limit(10).sort({winCount: -1});
-
-    return res.json(results);
+    const results = await Result.find().limit(10).sort({ wincount: -1, address: 1 });
+    
+    let rankedResults = [];
+    let currentRank = 1;
+    let previousWincount = null;
+    
+    results.forEach((result, index) => {
+      if (result.winCount !== previousWincount) {
+        currentRank = index + 1;
+      }
+      
+      rankedResults.push({
+        rank: currentRank,
+        address: result.address,
+        winCount: result.winCount
+      });
+      
+      previousWincount = result.winCount;
+    });
+    
+    return res.json(rankedResults);
   } catch (error) {
     return next(error);
   }
