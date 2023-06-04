@@ -17,7 +17,12 @@ const UserInfo = new mongoose.Schema({
     type: Number,
     require: false,
   },
-  ownNfts: {
+  ownIds: {
+    type: Array,
+    require: false,
+    default: [],
+  },
+  ownAddress: {
     type: Array,
     require: false,
     default: [],
