@@ -33,15 +33,13 @@ async function create(req, res, next) {
       } else {
         findUser.claimAmount = userinfo.claimAmount + findUser.claimAmount;
       }
-      if (userinfo.ownIds[0] === -1) {
-        findUser.ownIds = [];
-        findUser.ownAddress = [];
-      } else if (userinfo.ownIds === []) {
-        findUser.ownIds = [...findUser.ownIds];
-        findUser.ownAddress = [...findUser.ownAddress];
+      if (userinfo.ownNfts[0] === -1) {
+        findUser.ownNfts = [];
+      } else if (userinfo.ownNfts === []) {
+        findUser.ownNfts = [...findUser.ownNfts];
       } else {
-        findUser.ownIds = [...findUser.ownIds, ...userinfo.ownIds];
-        findUser.ownAddress = [...findUser.ownAddress, ...userinfo.ownAddress];
+        const ownNftsSet = new Set([...findUser.ownNfts, ...userinfo.ownNfts]);
+        findUser.ownNfts = [...ownNftsSet];
       }
       findUser.stakeAmount = userinfo.stakeAmount + findUser.stakeAmount;
       const saveUserInfo = await findUser.save();

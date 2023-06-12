@@ -17,14 +17,10 @@ const UserInfo = new mongoose.Schema({
     type: Number,
     require: false,
   },
-  ownIds: {
+  ownNfts: {
     type: Array,
     require: false,
-    default: [],
-  },
-  ownAddress: {
-    type: Array,
-    require: false,
+    unique: true,
     default: [],
   },
   createdAt: {
