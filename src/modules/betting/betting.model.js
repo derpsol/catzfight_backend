@@ -44,6 +44,14 @@ const BettingSchema = new mongoose.Schema({
     type: Number,
     require: false,
   },
+  nftAddress: {
+    type: String,
+    require: true,
+  },
+  nftName: {
+    type: String,
+    require: true,
+  },
   createdAt: {
     type: Date,
     default: Date.now,
