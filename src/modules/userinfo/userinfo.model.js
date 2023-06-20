@@ -20,7 +20,6 @@ const UserInfo = new mongoose.Schema({
   ownNfts: {
     type: Array,
     require: false,
-    unique: true,
     default: [],
   },
   createdAt: {

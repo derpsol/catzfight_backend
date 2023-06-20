@@ -11,7 +11,6 @@ async function list(req, res, next) {
 
 async function myResult(req, res, next) {
   try {
-    console.log('params: ', req);
     const results = await Result.find({
       $or: [
         { address1: { $eq: req.query.address } },
