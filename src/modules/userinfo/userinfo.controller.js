@@ -35,18 +35,24 @@ async function create(req, res, next) {
       }
       if (userinfo.ownNfts[0] === -1) {
         findUser.ownNfts = [];
-      } else if (userinfo.ownNfts === []) {
+      } else if (userinfo.ownNfts.length === 0) {
         findUser.ownNfts = [...findUser.ownNfts];
       } else {
         const ownNftsSet = new Set([...findUser.ownNfts, ...userinfo.ownNfts]);
         findUser.ownNfts = [...ownNftsSet];
       }
+      
       findUser.stakeAmount = userinfo.stakeAmount + findUser.stakeAmount;
+      
       const saveUserInfo = await findUser.save();
+
+      req.io.to('fightRoom').emit('savedUserInfo', saveUserInfo);
+
       return res.json(saveUserInfo);
+    } else {
+      const savedUserInfo = await userinfo.save();
+      return res.json(savedUserInfo);  
     }
-    const savedUserInfo = await userinfo.save();
-    return res.json(savedUserInfo);
   } catch (error) {
     return next(error);
   }
